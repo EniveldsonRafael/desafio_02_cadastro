@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="desafio02.css" rel="stylesheet">
+	</head>
+	<body>
+		<main>
+			<h2 class = "titulo">Cadastro</h2>
+			<form>
+				<fieldset class = "formulario">
+					<label for= "nome"> Nome</label>
+					<input type ="text" id ="nome" class = "inserir" required placeholder = "Fulano Silva">
+					
+					<label for="email"> Email</label>
+					<input type ="email" id ="email" class = "inserir" required  placeholder = "fulano@dominio.com">
+					
+					<label for="senha">senha</label>
+					<input type ="password" id ="senha" class = "inserir" required  placeholder = "digite uma senha valida">
+					
+				</fieldset>
+				<button type = "submit" class = 'enviar'  id = 'botao' onclick = 'validar()'> enviar </button>
+				
+				<h2 id ="erro"></h2>
+			</form>
+		</main>
+		<script>
+		
+			document.querySelector("#botao").addEventListener("click",event=>{
+			event.preventDefault()})
+		
+			function validar(){
+			
+				let nome = document.getElementById('nome').value; 
+				let email = document.getElementById('email').value; 
+				let senha = document.getElementById('senha').value;
+				let erro = document.getElementById('erro');
+			
+				if(nome === '' || email === '' || senha === ''){
+				
+					erro.textContent = "Por favor, preencha os campos obrigatorio"
+					erro.classList = "msgErro";
+				
+					setTimeout(()=>{
+					erro.textContent = "";
+					erro.classList = "";
+					nome.value = "";
+					email.value = "";
+					senha.value = "";
+					},2000);
+				return;
+				}
+			}
+			
+		</script>
+	
+</html>
